@@ -6,8 +6,13 @@ const port = 1337;
 const app = express();
 app.use(express.json());
 
+app.use(require("./routes/route"));
+
 app.get("/", (req, res) => {
-  res.sendStatus(200);
+  res.status(200).send({
+    success: true,
+    message: "Node server running",
+  });
 });
 
 // Add new property
