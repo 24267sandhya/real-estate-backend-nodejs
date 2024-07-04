@@ -6,8 +6,6 @@ const port = 1337;
 const app = express();
 app.use(express.json());
 
-app.use(require("./routes/route"));
-
 app.get("/", (req, res) => {
   res.status(200).send({
     success: true,
@@ -88,12 +86,10 @@ app.put("/update_property_details", async (req, res) => {
       [locality_id, owner_name, property_id]
     );
 
-    res
-      .status(200)
-      .json({
-        message: "Property updated",
-        property: { property_id, locality_id, owner_name },
-      });
+    res.status(200).json({
+      message: "Property updated",
+      property: { property_id, locality_id, owner_name },
+    });
   } catch (error) {
     res.status(500).json({ error: "Internal Server Error" });
   }
